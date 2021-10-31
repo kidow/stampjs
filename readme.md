@@ -114,7 +114,7 @@ stamp('internet:email', real_email) // stampjs@gmail.com
 
 ### **text**
 
-- text:character : 
+- text:character : `A` `b` `C` `d` ...
 
 ## Localization
 
