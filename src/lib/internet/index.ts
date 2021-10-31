@@ -6,7 +6,7 @@ import {
   getNumber,
   getWord,
   matchArray,
-  uuid
+  getUuid
 } from '../../utils'
 
 const internet = (format: string): string => {
@@ -27,7 +27,7 @@ const internet = (format: string): string => {
   }
   if (isIncluded('internet:uuid')) {
     matchArray(format, 'internet:uuid').forEach(() => {
-      format = format.replace('internet:uuid', uuid())
+      format = format.replace('internet:uuid', getUuid())
     })
   }
   if (isIncluded('internet:domain')) {
@@ -40,7 +40,7 @@ const internet = (format: string): string => {
   if (isIncluded('internet:url')) {
     const protocol = getElement(['http', 'https'])
     const replaceValue = () =>
-      `${getElement(protocol)}://${getBoolean() ? getWord(4) : ''}.${getWord(
+      `${protocol}://${getBoolean() ? getWord(4) : ''}.${getWord(
         10,
         5
       )}.${getElement(TLD)}`

@@ -1,51 +1,42 @@
 import { MONTH, WEEKDAY } from '../../data'
-import { getElement, getNumber, getNumberString, matchArray } from '../../utils'
+import {
+  getDate,
+  getElement,
+  getNumber,
+  getNumberString,
+  matchArray
+} from '../../utils'
 
 const date = (format: string): string => {
   const isIncluded = (text: string) => format.indexOf(text) !== -1
 
   if (isIncluded('date:YYYY-MM-DD')) {
-    const replaceValue = () => {
-      const year = getNumber(new Date().getFullYear(), 1970)
-      const month = getNumberString(12, 1)
-      let day = ''
-      if (['01', '03', '05', '07', '08', '10', '12'].indexOf(month) !== -1)
-        day = getNumberString(31, 1)
-      else if (month === '02') day = getNumberString(28, 1)
-      else if (['04', '06', '09', '11'].indexOf(month) !== -1)
-        day = getNumberString(30, 1)
-
-      return `${year}-${month}-${day}`
-    }
+    const replaceValue = () =>
+      getDate(new Date(new Date().getFullYear() - 100, 12, 31)).slice(0, 10)
     matchArray(format, 'date:YYYY-MM-DD').forEach(() => {
       format = format.replace('date:YYYY-MM-DD', replaceValue())
     })
   }
   if (isIncluded('date:time-local')) {
-    const year = () =>
-      getNumberString(new Date().getFullYear(), new Date().getFullYear() - 100)
-    const month = getNumberString(12)
-    const day = getNumberString(28)
-    const minute = getNumberString(60)
-    const second = getNumberString(60)
-    const replaceValue = `${year}-${month}-${day}T${minute}:${second}`
+    const replaceValue = () =>
+      getDate(new Date(new Date().getFullYear() - 100, 12, 31)).slice(0, 16)
     matchArray(format, 'date:time-local').forEach(() => {
-      format = format.replace('date:time-local', replaceValue)
+      format = format.replace('date:time-local', replaceValue())
     })
   }
   if (isIncluded('date:hour')) {
     matchArray(format, 'date:hour').forEach(() => {
-      format = format.replace('date:hour', getNumber(24).toString())
+      format = format.replace('date:hour', getNumberString(24))
     })
   }
   if (isIncluded('date:minute')) {
     matchArray(format, 'date:minute').forEach(() => {
-      format = format.replace('date:minute', getNumber(60).toString())
+      format = format.replace('date:minute', getNumberString(60))
     })
   }
   if (isIncluded('date:second')) {
     matchArray(format, 'date:second').forEach(() => {
-      format = format.replace('date:second', getNumber(60).toString())
+      format = format.replace('date:second', getNumberString(60))
     })
   }
   if (isIncluded('date:weekday')) {
@@ -71,7 +62,8 @@ const date = (format: string): string => {
     })
   }
   if (isIncluded('date:timestamp')) {
-    const replaceValue = () => new Date().getTime().toString()
+    const replaceValue = () =>
+      getNumberString(new Date().getTime(), 1000000000000)
     matchArray(format, 'date:timestamp').forEach(() => {
       format = format.replace('date:timestamp', replaceValue())
     })

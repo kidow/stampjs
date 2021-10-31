@@ -8,7 +8,7 @@ export const getNumber = (max: number, min: number = 0): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export const uuid = () => {
+export const getUuid = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     let r = (Math.random() * 16) | 0
     let v = c === 'x' ? r : (r & 0x3) | 0x8
@@ -80,6 +80,11 @@ export const getWord = (max: number, min: number = 1): string => {
 }
 
 export const getBoolean = () => !!Math.round(Math.random())
+
+export const getDate = (start: Date, end: Date = new Date()) =>
+  new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  ).toISOString()
 
 // function convertToRoman(num: number) {
 //   var roman = {

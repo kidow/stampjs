@@ -1,5 +1,5 @@
 import { CHARACTER } from '../../data'
-import { getNumber, matchArray } from '../../utils'
+import { getElement, matchArray } from '../../utils'
 
 const text = (format: string): string => {
   const isIncluded = (text: string) => format.indexOf(text) !== -1
@@ -8,10 +8,7 @@ const text = (format: string): string => {
   }
   if (isIncluded('text:character')) {
     matchArray(format, 'text:character').forEach(() => {
-      format = format.replace(
-        'text:character',
-        CHARACTER[getNumber(CHARACTER.length - 1)]
-      )
+      format = format.replace('text:character', getElement(CHARACTER.split('')))
     })
   }
   if (isIncluded('text:sentence')) {

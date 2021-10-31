@@ -14990,7 +14990,7 @@ export const FILE_EXTENSION = [
 export const FIRST_NAME = [
   '김',
   '이',
-  '빅',
+  '박',
   '최',
   '정',
   '강',
