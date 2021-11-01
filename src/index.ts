@@ -13,7 +13,7 @@ import {
 } from './lib'
 
 const stamp = (format: string, data?: string): string => {
-  if (!IS_DEV && !!data) return data
+  if (!IS_DEV && data !== undefined) return data
 
   const isIncluded = (text: string) => format.indexOf(text) !== -1
 
