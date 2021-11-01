@@ -1,30 +1,53 @@
 import { getNumber } from '../../utils'
 
-const number = (format: string): string => {
+export class StampNumber {
+  mn(format: string) {
+    const match = format.match(/\d+-\d+/g)
+    if (!match) return ''
+    const arr = match[0].split('-').map(Number)
+    return format.replace(
+      /number\:\d+-\d+/,
+      getNumber(Math.max(...arr), Math.min(...arr)).toString()
+    )
+  }
+  n(format: string) {
+    const match = format.match(/\d+/g)
+    if (!match) return ''
+    const value = Number(match[0])
+    return (format = format.replace(/number\:\d+/, getNumber(value).toString()))
+  }
+}
+
+export default (format: string): string => {
+  const number = new StampNumber()
+
   while (format.indexOf('number:') !== -1) {
     // number:##-##
     if (/number\:\d+-\d+/g.test(format)) {
       const match = format.match(/number\:\d+-\d+/g)
-      const formatArr = format.match(/\d+-\d+/g)
-      if (match && formatArr) {
-        const arr = formatArr[0].split('-').map(Number)
+      if (match) {
         Array.from({ length: match.length }).forEach(() => {
-          format = format.replace(
-            /number\:\d+-\d+/g,
-            getNumber(Math.max(...arr), Math.min(...arr)).toString()
-          )
+          format = format.replace(/number\:\d+-\d+/, number.mn(format))
         })
       }
     }
 
     // number:#####
-    if (/number\:\d+/g.test(format)) {
+    else if (/number\:\d+/g.test(format)) {
       const match = format.match(/number\:\d+/g)
-      const formatArr = format.match(/\d+/g)
-      if (match && formatArr) {
-        const value = Number(formatArr[0])
+      if (match) {
         Array.from({ length: match.length }).forEach(() => {
-          format = format.replace(/number\:\d+/g, getNumber(value).toString())
+          format = format.replace(/number\:\d+/, number.n(format))
+        })
+      }
+    }
+
+    // etc number:
+    else {
+      const match = format.match(/number\:/g)
+      if (match) {
+        Array.from({ length: match.length }).forEach(() => {
+          format = format.replace(/number\:/, '')
         })
       }
     }
@@ -32,5 +55,3 @@ const number = (format: string): string => {
 
   return format
 }
-
-export default number

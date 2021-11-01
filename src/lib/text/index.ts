@@ -1,14 +1,21 @@
 import { CHARACTER } from '../../data'
 import { getElement, matchArray } from '../../utils'
 
-const text = (format: string): string => {
+export class StampText {
+  character() {
+    return getElement(CHARACTER.split(''))
+  }
+}
+
+export default (format: string): string => {
   const isIncluded = (text: string) => format.indexOf(text) !== -1
+  const text = new StampText()
 
   if (isIncluded('text:word')) {
   }
   if (isIncluded('text:character')) {
     matchArray(format, 'text:character').forEach(() => {
-      format = format.replace('text:character', getElement(CHARACTER.split('')))
+      format = format.replace('text:character', text.character())
     })
   }
   if (isIncluded('text:sentence')) {
@@ -16,5 +23,3 @@ const text = (format: string): string => {
 
   return format
 }
-
-export default text

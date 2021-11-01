@@ -162,13 +162,18 @@ export const NUMBER = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 export const WEEKDAY = ['월', '화', '수', '목', '금', '토', '일']
 
 export const MONTH = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursdays',
-  'Friday',
-  'Saturday',
-  'Sunday'
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ]
 
 export const USER_AGENT = [

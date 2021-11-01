@@ -110,7 +110,6 @@ stamp('system:file_extension') // 'jpeg'
 ```js
 stamp('text:character') // 'A'
 ```
-```
 
 ## Localization
 
