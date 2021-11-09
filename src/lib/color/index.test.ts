@@ -1,23 +1,22 @@
-import { StampColor } from '.'
+import stamp from '../..'
 
 describe('color format test', () => {
-  const color = new StampColor()
   test('color:hex', () => {
-    console.log(`color:hex => ${color.hex()}`)
+    console.log(`color:hex => ${stamp('color:hex')}`)
   })
   test('color:rgba', () => {
-    console.log(`color:rgba => ${color.rgba()}`)
+    console.log(`color:rgba => ${stamp('color:rgba')}`)
   })
   test('color:rgb', () => {
-    console.log(`color:rgb => ${color.rgb()}`)
+    console.log(`color:rgb => ${stamp('color:rgb')}`)
   })
   test('color:shorthex', () => {
-    console.log(`color:shorthex => ${color.shorthex()}`)
+    console.log(`color:shorthex => ${stamp('color:shorthex')}`)
   })
   test('color:name', () => {
-    console.log(`color:name => ${color.name()}`)
+    console.log(`color:name => ${stamp('color:name')}`)
   })
   test('color', () => {
-    console.log(`color => ${color.default()}`)
+    console.log(`color => ${stamp('color')}`)
   })
 })

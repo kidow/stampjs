@@ -1,26 +1,25 @@
-import { StampInternet } from '.'
+import stamp from "../.."
 
 describe('internet format test', () => {
-  const internet = new StampInternet()
   test('internet:ip', () => {
-    console.log(`internet:ip => ${internet.ip()}`)
+    console.log(`internet:ip => ${stamp('internet:ip')}`)
   })
   test('internet:email', () => {
-    console.log(`internet:email => ${internet.email()}`)
+    console.log(`internet:email => ${stamp('internet:email')}`)
   })
   test('internet:uuid', () => {
-    console.log(`internet:uuid => ${internet.uuid()}`)
+    console.log(`internet:uuid => ${stamp('internet:uuid')}`)
   })
   test('internet:domain', () => {
-    console.log(`internet:domain => ${internet.domain()}`)
+    console.log(`internet:domain => ${stamp('internet:domain')}`)
   })
   test('internet:url', () => {
-    console.log(`internet:url => ${internet.url()}`)
+    console.log(`internet:url => ${stamp('internet:url')}`)
   })
   test('internet:user_agent', () => {
-    console.log(`internet:user_agent => ${internet.userAgent()}`)
+    console.log(`internet:user_agent => ${stamp('internet:user_agent')}`)
   })
   test('internet:tld', () => {
-    console.log(`internet:tld => ${internet.tld()}`)
+    console.log(`internet:tld => ${stamp('internet:tld')}`)
   })
 })

@@ -1,8 +1,7 @@
-import { StampImage } from '.'
+import stamp from '../..'
 
 describe('image format test', () => {
-  const image = new StampImage()
   test('image:avatar', () => {
-    console.log(`image:avatar => ${image.avatar()}`)
+    console.log(`image:avatar => ${stamp('image:avatar')}`)
   })
 })

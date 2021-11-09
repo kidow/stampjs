@@ -1,6 +1,6 @@
 import type { IAddress } from '../types'
 
-export const IS_DEV = process.env.NODE_ENV === 'development'
+export const IS_DEV = process.env.NODE_ENV !== 'production'
 export let LOCALE = 'ko'
 export const setStampLocale = (locale: string) => {
   LOCALE = locale

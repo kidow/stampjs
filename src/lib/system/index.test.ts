@@ -1,11 +1,10 @@
-import { StampSystem } from '.'
+import stamp from "../.."
 
 describe('system format test', () => {
-  const system = new StampSystem()
   test('system:mime_type', () => {
-    console.log(`system:mime_type => ${system.mimeType()}`)
+    console.log(`system:mime_type => ${stamp('system:mime_type')}`)
   })
   test('system:file_extension', () => {
-    console.log(`system:file_extension => ${system.fileExtension()}`)
+    console.log(`system:file_extension => ${stamp('system:file_extension')}`)
   })
 })

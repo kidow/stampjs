@@ -1,8 +1,7 @@
-import { StampText } from '.'
+import stamp from "../.."
 
 describe('text format test', () => {
-  const text = new StampText()
   test('text:character', () => {
-    console.log(`text:character => ${text.character()}`)
+    console.log(`text:character => ${stamp('text:character')}`)
   })
 })

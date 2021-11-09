@@ -31,7 +31,7 @@ const stamp = (format: string, data?: string): string => {
   if (isIncluded('custom')) {
   }
 
-  return ''
+  return format
 }
 
 export default stamp
